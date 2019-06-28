@@ -1,0 +1,11 @@
+E:\C#Projects\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.csprojResolveAssemblyReference.cache
+E:\C#Projects\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.Properties.Resources.resources
+E:\C#Projects\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.csproj.GenerateResource.Cache
+E:\C#Projects\SpaceGame2\SpaceGame2\bin\Debug\SpaceGame2.exe.config
+E:\C#Projects\SpaceGame2\SpaceGame2\bin\Debug\SpaceGame2.exe
+E:\C#Projects\SpaceGame2\SpaceGame2\bin\Debug\SpaceGame2.pdb
+E:\C#Projects\SpaceGame2\SpaceGame2\bin\Debug\Engine.dll
+E:\C#Projects\SpaceGame2\SpaceGame2\bin\Debug\Engine.pdb
+E:\C#Projects\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.Form1.resources
+E:\C#Projects\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.exe
+E:\C#Projects\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.pdb

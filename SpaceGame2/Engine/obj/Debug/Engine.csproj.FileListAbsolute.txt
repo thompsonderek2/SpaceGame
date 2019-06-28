@@ -1,0 +1,5 @@
+E:\C#Projects\SpaceGame2\Engine\bin\Debug\Engine.dll
+E:\C#Projects\SpaceGame2\Engine\bin\Debug\Engine.pdb
+E:\C#Projects\SpaceGame2\Engine\obj\Debug\Engine.csprojResolveAssemblyReference.cache
+E:\C#Projects\SpaceGame2\Engine\obj\Debug\Engine.dll
+E:\C#Projects\SpaceGame2\Engine\obj\Debug\Engine.pdb
