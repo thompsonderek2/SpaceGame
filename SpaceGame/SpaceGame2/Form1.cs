@@ -73,6 +73,8 @@ namespace SpaceGame2
             TimersEnable();
             this.Controls.Remove(start);
             this.Controls.Remove(label4);
+            //start.Hide();
+            //label4.Hide();
             hitctr = missctr = scorectr = 0;
             enemy_speed = 40;
             game_over = false;
@@ -447,6 +449,7 @@ namespace SpaceGame2
         private void GameOver()
         {
             this.Controls.Add(this.start);
+            //start.Show();
             Enemies.Clear();
             foreach (PictureBox enemy_image in EnemyImage)
             {
