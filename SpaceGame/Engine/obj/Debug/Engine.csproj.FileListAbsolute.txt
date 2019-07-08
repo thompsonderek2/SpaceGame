@@ -3,3 +3,9 @@ E:\C#Projects\SpaceGame2\Engine\bin\Debug\Engine.pdb
 E:\C#Projects\SpaceGame2\Engine\obj\Debug\Engine.csprojResolveAssemblyReference.cache
 E:\C#Projects\SpaceGame2\Engine\obj\Debug\Engine.dll
 E:\C#Projects\SpaceGame2\Engine\obj\Debug\Engine.pdb
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\Engine\bin\Debug\Engine.dll
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\Engine\bin\Debug\Engine.pdb
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\Engine\obj\Debug\Engine.csprojAssemblyReference.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\Engine\obj\Debug\Engine.dll
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\Engine\obj\Debug\Engine.pdb

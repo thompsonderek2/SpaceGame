@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Engine
 {
     public class Projectile : Sprite
     {
+        public static List<Projectile> Missile = new List<Projectile>();
+        public static List<PictureBox> MissileImage = new List<PictureBox>();
+
+
         protected static int ctr = 0;
 
         public Projectile(int x_position, int y_position, int speed)

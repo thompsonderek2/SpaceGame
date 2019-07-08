@@ -25,7 +25,7 @@ namespace SpaceGame2
         int weapon_delay_ctr;
         int enemy_delay_ctr;
         int player_speed = 10;
-        int enemy_speed = 40;
+        int enemy_speed;
         int missile_speed = 10;
         // counter fields for the displayed score
         int hitctr = 0;
@@ -51,13 +51,13 @@ namespace SpaceGame2
         PictureBox NewExplosionImage;
         Explosion NewExplosion;
 
+        // Intitialize a new player object
         PictureBox PlayerImage;
         Player Player;
 
         public Form1()
         {
             InitializeComponent();
-            InitializePlayer();
 
             //Setup events that listens on keypress
             KeyDown += Form1_KeyDown;
@@ -76,8 +76,10 @@ namespace SpaceGame2
             //start.Hide();
             //label4.Hide();
             hitctr = missctr = scorectr = 0;
-            enemy_speed = 40;
+            enemy_speed = 10;
             game_over = false;
+
+            InitializePlayer();
             this.Controls.Add(PlayerImage);
 
 
@@ -282,7 +284,7 @@ namespace SpaceGame2
         // create the player sprite
         private void InitializePlayer()
         {
-            Player = new Player(250, 650, player_speed, 100, 100);
+            Player = new Player(this.Width/2-50, this.Height-140, player_speed, 100, 100);
             PlayerImage = new PictureBox();
             PlayerImage.Location = new Point(Player.PosX, Player.PosY);
             PlayerImage.BackColor = Color.Black;

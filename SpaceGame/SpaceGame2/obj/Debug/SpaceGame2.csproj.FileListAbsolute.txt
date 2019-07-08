@@ -20,3 +20,16 @@ E:\C#Projects\SpaceGame\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.Properties.Re
 E:\C#Projects\SpaceGame\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.csproj.GenerateResource.Cache
 E:\C#Projects\SpaceGame\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.exe
 E:\C#Projects\SpaceGame\SpaceGame2\SpaceGame2\obj\Debug\SpaceGame2.pdb
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Debug\SpaceGame2.exe.config
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Debug\SpaceGame2.exe
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Debug\SpaceGame2.pdb
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Debug\Engine.dll
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Debug\Engine.pdb
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.csprojAssemblyReference.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.Form1.resources
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.Properties.Resources.resources
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.csproj.GenerateResource.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.csproj.CoreCompileInputs.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.csproj.CopyComplete
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.exe
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Debug\SpaceGame2.pdb
