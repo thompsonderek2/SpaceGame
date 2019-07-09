@@ -33,17 +33,17 @@ namespace SpaceGame2
         int scorectr = 0;
 
 
-        // List to keep track of Projectile objects and images
-        List<Projectile> Missile = new List<Projectile>();
-        List<PictureBox> MissileImage = new List<PictureBox>();
-        PictureBox NewMissileImage;
-        Projectile NewMissile;
+        //// List to keep track of Projectile objects and images
+        //List<Projectile> Missile = new List<Projectile>();
+        //List<PictureBox> MissileImage = new List<PictureBox>();
+        //PictureBox NewMissileImage;
+        //Projectile NewMissile;
 
-        // List to keep track of enemies and/or enemy projectiles
-        List<Enemy> Enemies = new List<Enemy>();
-        List<PictureBox> EnemyImage = new List<PictureBox>();
-        PictureBox NewEnemyImage;
-        Enemy NewEnemy;
+        //// List to keep track of enemies and/or enemy projectiles
+        //List<Enemy> Enemies = new List<Enemy>();
+        //List<PictureBox> EnemyImage = new List<PictureBox>();
+        //PictureBox NewEnemyImage;
+        //Enemy NewEnemy;
 
         // List to keep track of explosion animations
         List<Explosion> Explosions = new List<Explosion>();
@@ -161,7 +161,7 @@ namespace SpaceGame2
             label3.Text = "Hits: " + hitctr.ToString();
 
             //MoveEnemy();
-            Enemy.MoveEnemy(game_over, missctr, scorectr, this);
+            Enemy.MoveEnemy(game_over, ref missctr, ref scorectr, this);
 
             if (enemy_delay_ctr >= 10 && game_over == false)
             {
@@ -374,7 +374,7 @@ namespace SpaceGame2
         // ends the game when an enemy hits the player
         private void EnemyImpact()
         {
-            foreach(Enemy enemy in Enemies)
+            foreach(Enemy enemy in Enemy.Enemies)
             {
                 if ((enemy.PosY+50) > Player.PosY && (enemy.PosX + enemy.Width) > Player.PosX && enemy.PosX < (Player.PosX + Player.Width))
                 {
@@ -383,7 +383,7 @@ namespace SpaceGame2
                     this.Controls.Remove(PlayerImage);
 
                     enemy.Hit = true;
-                    foreach (PictureBox enemy_image in EnemyImage)
+                    foreach (PictureBox enemy_image in Enemy.EnemyImage)
                     {
                         if (enemy_image.Name == enemy.ID.ToString())
                         {
@@ -403,9 +403,9 @@ namespace SpaceGame2
         private void MissileImpact()
         {
             // iteration to check for impact of missiles with enemies
-            foreach (Projectile missile in Missile)
+            foreach (Projectile missile in Projectile.Projectiles)//Missile)
             {
-                foreach (Enemy enemy in Enemies)
+                foreach (Enemy enemy in Enemy.Enemies)
                 {
                     // if the missile has impacted an enemy, set both hit flags to be true
                     if ((enemy.PosY + 50) > missile.PosY && missile.PosY > (enemy.PosY) && enemy.PosX < missile.PosX && missile.PosX < (enemy.PosX + enemy.Width))
@@ -420,7 +420,7 @@ namespace SpaceGame2
                         }
 
                         // remove the images
-                        foreach (PictureBox missile_image in MissileImage)
+                        foreach (PictureBox missile_image in Projectile.ProjectileImage)//MissileImage)
                         {
                             if (missile_image.Name == missile.ID.ToString())
                             {
@@ -429,7 +429,7 @@ namespace SpaceGame2
                                 // let the item from the image list get removed when it reaches the top of the window
                             }
                         }
-                        foreach (PictureBox enemy_image in EnemyImage)
+                        foreach (PictureBox enemy_image in Enemy.EnemyImage)
                         {
                             if (enemy_image.Name == enemy.ID.ToString())
                             {
@@ -440,30 +440,34 @@ namespace SpaceGame2
                                 // remove enemy image from the form
                                 this.Controls.Remove(enemy_image);
                                 // let the item from the image list get removed when it reaches the top of the window
+                                //OR remove it based on the matching coordinates of the object
                             }
                         }
+                        // must go within these brackets or null pointer exception occurs
+                        Enemy.EnemyImage.RemoveAll(x => x.Top == Enemy.Enemies.Find(y => y.Hit == true).PosY);
+                        Projectile.ProjectileImage.RemoveAll(x => x.Top == Projectile.Projectiles.Find(y => y.Hit == true).PosY);
                     }
                 }
 
             }
-            Enemies.RemoveAll(x => x.Hit == true);
-
-            Missile.RemoveAll(x => x.Hit == true);
+            Enemy.Enemies.RemoveAll(x => x.Hit == true);
+            Projectile.Projectiles.RemoveAll(x => x.Hit == true);
         }
 
         // If the player 
         private void GameOver()
         {
             this.Controls.Add(this.start);
-            //start.Show();
-            Enemies.Clear();
-            foreach (PictureBox enemy_image in EnemyImage)
-            {
-                // remove enemy image from the form
-                this.Controls.Remove(enemy_image);
-                // let the item from the image list get removed when it reaches the top of the window
-            }
-            EnemyImage.Clear();
+            Enemy.ClearLists(this);
+            ////start.Show();
+            //Enemies.Clear();
+            //foreach (PictureBox enemy_image in EnemyImage)
+            //{
+            //    // remove enemy image from the form
+            //    this.Controls.Remove(enemy_image);
+            //    // let the item from the image list get removed when it reaches the top of the window
+            //}
+            //EnemyImage.Clear();
         }
 
         // Enables all timers

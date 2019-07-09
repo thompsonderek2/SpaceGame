@@ -10,7 +10,7 @@ namespace Engine
 {
     public class Projectile : Sprite
     {
-        public static List<Projectile> ProjectileObj = new List<Projectile>();
+        public static List<Projectile> Projectiles = new List<Projectile>();
         public static List<PictureBox> ProjectileImage = new List<PictureBox>();
 
 
@@ -33,7 +33,7 @@ namespace Engine
         {
             //NewMissile = new Projectile((PlayerImage.Left + PlayerImage.Width / 2), PlayerImage.Top, missile_speed);
             //Missile.Add(NewMissile);
-            ProjectileObj.Add(this);
+            Projectiles.Add(this);
 
 
             PictureBox NewProjectileImage = new PictureBox();
@@ -59,11 +59,11 @@ namespace Engine
         {
             /* move the position of each missile upwards
             using a foreach to change the position of each projectile */
-            foreach (Projectile projectile in ProjectileObj)
+            foreach (Projectile projectile in Projectiles)
             {
                 projectile.PosY -= projectile.Speed;
             }
-            ProjectileObj.RemoveAll(x => x.PosY < 10);
+            Projectiles.RemoveAll(x => x.PosY < 10);
             foreach (PictureBox projectile_image in ProjectileImage)
             {
                 /* The missile image needs to be removed from the form AND the list

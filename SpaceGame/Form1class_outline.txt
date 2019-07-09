@@ -1,0 +1,45 @@
+class Form1 : Form
+// CLASS PROPERTIES
+        bool move_right = false;
+        bool move_left = false;
+        bool fire_weapon = false;
+        bool cool_down = false;
+        bool game_over = false;
+        int weapon_delay_ctr;
+        int enemy_delay_ctr;
+        int player_speed = 10;
+        int enemy_speed;
+        int missile_speed = 10;
+        int hitctr = 0;
+        int missctr = 0;
+        int scorectr = 0;
+
+// CONSTRUCTOR
+        public Form1()
+
+// EVENT HANDLERS
+        private void start_Click(object sender, EventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
+        private void Missiletimer_Tick(object sender, EventArgs e)
+        private void Enemytimer_Tick(object sender, EventArgs e)
+        private void Impacttimer_Tick(object sender, EventArgs e)
+        private void ExplosionTimer_Tick(object sender, EventArgs e)
+
+// CLASS METHODS
+        private void MakeNewExplosion(int x, int y)
+        private void InitializePlayer()
+        private void MovePlayer()
+        private void ExplosionTime()
+        private void EnemyImpact()
+        private void MissileImpact()
+        private void GameOver()
+        private void TimersEnable()
+        public int RandomNumber(int min, int max)
+
+// UNUSED EVENT HANDLERS
+        private void PlayerImage_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
