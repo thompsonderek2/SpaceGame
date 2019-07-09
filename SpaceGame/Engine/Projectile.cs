@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Engine
 {
     public class Projectile : Sprite
     {
-        public static List<Projectile> Missile = new List<Projectile>();
-        public static List<PictureBox> MissileImage = new List<PictureBox>();
+        public static List<Projectile> ProjectileObj = new List<Projectile>();
+        public static List<PictureBox> ProjectileImage = new List<PictureBox>();
 
 
         protected static int ctr = 0;
 
-        public Projectile(int x_position, int y_position, int speed)
+        public Projectile(int x_position, int y_position, int speed, Form form)
         {
             ID = ctr;
             PosX = x_position;
@@ -23,6 +24,57 @@ namespace Engine
             Speed = speed;
             Hit = false;
             ctr += 1;
+
+            MakeNewProjectile(form);
+
+        }
+
+        private void MakeNewProjectile(Form form)
+        {
+            //NewMissile = new Projectile((PlayerImage.Left + PlayerImage.Width / 2), PlayerImage.Top, missile_speed);
+            //Missile.Add(NewMissile);
+            ProjectileObj.Add(this);
+
+
+            PictureBox NewProjectileImage = new PictureBox();
+            NewProjectileImage.Location = new Point(this.PosX, this.PosY);
+            NewProjectileImage.BackColor = Color.Orange;
+            NewProjectileImage.Size = new Size(5, 10);
+
+            /* Naming the picturebox is only necessary because that is required for adding controls to a form at runtime, chose projectile ID because unique
+            better way would be to use a random number since there is a small chance of number repeat.however, because the garbage collector runs at random,
+            reseting the object counter, the chance is pretty small. */
+            NewProjectileImage.Name = this.ID.ToString();
+            ProjectileImage.Add(NewProjectileImage);
+
+            // Adds the missile picturebox to the form
+            form.Controls.Add(NewProjectileImage);
+
+            // subtract one from score for each missile shot
+            // scorectr--;
+        }
+
+        /* I needed to ensure that the visible image and the invisible sprite object stayed aligned while moving across the screen */
+        public static void MoveProjectile(int projectile_speed, Form form)
+        {
+            /* move the position of each missile upwards
+            using a foreach to change the position of each projectile */
+            foreach (Projectile projectile in ProjectileObj)
+            {
+                projectile.PosY -= projectile.Speed;
+            }
+            ProjectileObj.RemoveAll(x => x.PosY < 10);
+            foreach (PictureBox projectile_image in ProjectileImage)
+            {
+                /* The missile image needs to be removed from the form AND the list
+                the list is needed to sysematically increment the position of the image */
+                projectile_image.Top -= projectile_speed;
+                if (projectile_image.Top < 10)
+                {
+                    form.Controls.Remove(projectile_image);
+                }
+            }
+            ProjectileImage.RemoveAll(x => x.Top < 10);
         }
 
         ~Projectile()
