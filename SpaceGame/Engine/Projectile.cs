@@ -47,7 +47,7 @@ namespace Engine
         }
 
         /* I needed to ensure that the visible image and the invisible sprite object stayed aligned while moving across the screen */
-        public static void MoveProjectile(int projectile_speed, Form form)
+        public static void MoveProjectile(Form form)
         {
             /* move the position of each missile upwards
             using a foreach to change the position of each projectile */
@@ -60,7 +60,7 @@ namespace Engine
             {
                 /* The missile image needs to be removed from the form AND the list
                 the list is needed to sysematically increment the position of the image */
-                projectile_image.Top -= projectile_speed;
+                projectile_image.Top -= Projectiles.Find(x => x.ID.ToString() == projectile_image.Name).Speed;
                 if (projectile_image.Top < 10)
                 {
                     form.Controls.Remove(projectile_image);

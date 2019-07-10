@@ -40,15 +40,15 @@ namespace Engine
         }
 
         // move the player sprite
-        public void MovePlayer(bool move_right, bool move_left, int player_speed, Form form)
+        public void MovePlayer(bool move_right, bool move_left, Form form)
         {
             if (move_right == true && (PosX < (form.Width - PlayerImage.Width)))
             {
-                PosX += player_speed;
+                PosX += Speed;
             }
             if (move_left == true && PosX > 0)
             {
-                PosX -= player_speed;
+                PosX -= Speed;
             }
             PlayerImage.Left = PosX;
         }

@@ -56,9 +56,6 @@ namespace SpaceGame2
             game_over = false;
 
             InitializePlayer();
-            this.Controls.Add(Player.PlayerImage);
-
-
         }
 
         // Handle the KeyDown event to print the type of character entered into the control.
@@ -100,14 +97,13 @@ namespace SpaceGame2
             label1.Text = "Score: " + scorectr;
 
             // move the player sprite
-            Player.PlayerObj.MovePlayer(move_right, move_left, player_speed, this);
-            
+            Player.PlayerObj.MovePlayer(move_right, move_left, this);  
         }
 
         // Tick for moving missiles
         private void Missiletimer_Tick(object sender, EventArgs e)
         {
-            Projectile.MoveProjectile(missile_speed, this);
+            Projectile.MoveProjectile(this);
 
             // handle weapon cooldown rate
             if (weapon_delay_ctr == 10)
@@ -156,7 +152,6 @@ namespace SpaceGame2
         }
 
         /*This event handler checks if a missile has impacted an enemy*/
-
         private void Impacttimer_Tick(object sender, EventArgs e)
         {
             MissileImpact();
@@ -164,7 +159,6 @@ namespace SpaceGame2
         }
 
         /*event handler for explosion animation*/
-
         private void ExplosionTimer_Tick(object sender, EventArgs e)
         {
             Explosion.ExplosionTime(this);
