@@ -32,29 +32,6 @@ namespace SpaceGame2
         int missctr = 0;
         int scorectr = 0;
 
-
-        //// List to keep track of Projectile objects and images
-        //List<Projectile> Missile = new List<Projectile>();
-        //List<PictureBox> MissileImage = new List<PictureBox>();
-        //PictureBox NewMissileImage;
-        //Projectile NewMissile;
-
-        //// List to keep track of enemies and/or enemy projectiles
-        //List<Enemy> Enemies = new List<Enemy>();
-        //List<PictureBox> EnemyImage = new List<PictureBox>();
-        //PictureBox NewEnemyImage;
-        //Enemy NewEnemy;
-
-        // List to keep track of explosion animations
-        List<Explosion> Explosions = new List<Explosion>();
-        List<PictureBox> ExplosionImage = new List<PictureBox>();
-        PictureBox NewExplosionImage;
-        Explosion NewExplosion;
-
-        // Intitialize a new player object
-        PictureBox PlayerImage;
-        Player Player;
-
         public Form1()
         {
             InitializeComponent();
@@ -73,14 +50,13 @@ namespace SpaceGame2
             TimersEnable();
             this.Controls.Remove(start);
             this.Controls.Remove(label4);
-            //start.Hide();
-            //label4.Hide();
+
             hitctr = missctr = scorectr = 0;
             enemy_speed = 10;
             game_over = false;
 
             InitializePlayer();
-            this.Controls.Add(PlayerImage);
+            this.Controls.Add(Player.PlayerImage);
 
 
         }
@@ -124,7 +100,8 @@ namespace SpaceGame2
             label1.Text = "Score: " + scorectr;
 
             // move the player sprite
-            MovePlayer();
+            Player.PlayerObj.MovePlayer(move_right, move_left, player_speed, this);
+            
         }
 
         // Tick for moving missiles
@@ -138,8 +115,8 @@ namespace SpaceGame2
                 // Fire weapon 
                 if (fire_weapon == true && game_over == false)
                 {
-                    //MakeNewMissile();
-                    new Projectile((PlayerImage.Left + PlayerImage.Width / 2), PlayerImage.Top, missile_speed, this);
+                    new Projectile((Player.PlayerImage.Left + Player.PlayerImage.Width / 2), Player.PlayerImage.Top, missile_speed, this);
+                    
                     // subtract one from score for each missile shot
                     scorectr--;
                 }
@@ -160,7 +137,6 @@ namespace SpaceGame2
             label2.Text = "Miss: "+missctr.ToString();
             label3.Text = "Hits: " + hitctr.ToString();
 
-            //MoveEnemy();
             Enemy.MoveEnemy(game_over, ref missctr, ref scorectr, this);
 
             if (enemy_delay_ctr >= 10 && game_over == false)
@@ -170,7 +146,7 @@ namespace SpaceGame2
                 {
                     enemy_speed += 10;
                 }
-                new Enemy(RandomNumber(PlayerImage.Width / 2, Width - PlayerImage.Width), 0, enemy_speed, 100, 90, this, global::SpaceGame2.Properties.Resources.enemy_ship);
+                new Enemy(RandomNumber(Player.PlayerImage.Width / 2, Width - Player.PlayerImage.Width), 0, enemy_speed, 100, 90, this, global::SpaceGame2.Properties.Resources.enemy_ship);
                 enemy_delay_ctr = 0;
             }
             else
@@ -191,184 +167,18 @@ namespace SpaceGame2
 
         private void ExplosionTimer_Tick(object sender, EventArgs e)
         {
-            ExplosionTime();
+            Explosion.ExplosionTime(this);
         }
 
-        // CLASS METHODS
-
-        ///* Produce a new missile object and image (picturebox object) and add it to the respective lists. In order to ensure that the 
-        // visible image on the form matches up with the parameters of the object I initialized the top left corners to the same pixel coordinates*/
-        //private void MakeNewMissile()
-        //{
-        //    NewMissile = new Projectile((PlayerImage.Left + PlayerImage.Width / 2), PlayerImage.Top, missile_speed, this);
-        //    Missile.Add(NewMissile);
-        //    NewMissileImage = new PictureBox();
-        //    NewMissileImage.Location = new Point(NewMissile.PosX, NewMissile.PosY);
-        //    NewMissileImage.BackColor = Color.Orange;
-        //    NewMissileImage.Size = new Size(5, 10);
-
-        //    /* Naming the picturebox is only necessary because that is required for adding controls to a form at runtime, chose projectile ID because unique
-        //    better way would be to use a random number since there is a small chance of number repeat.however, because the garbage collector runs at random,
-        //    reseting the object counter, the chance is pretty small. */
-
-        //   NewMissileImage.Name = NewMissile.ID.ToString();
-
-        //    // Adds the missile picturebox to the form
-        //    this.Controls.Add(NewMissileImage);
-
-        //    MissileImage.Add(NewMissileImage);
-
-        //    // subtract one from score for each missile shot
-        //    scorectr--;
-        //}
-
-        /* I needed to ensure that the visible image and the invisible sprite object stayed aligned while moving across the screen */
-        //private void MoveMissile()
-        //{
-        //    /* move the position of each missile upwards
-        //    using a foreach to change the position of each projectile */
-        //    foreach (Projectile missile in Missile)
-        //    {
-        //        missile.PosY -= missile.Speed;
-        //    }
-        //    Missile.RemoveAll(x => x.PosY < 10);
-        //    foreach (PictureBox missile_image in MissileImage)
-        //    {
-        //        /* The missile image needs to be removed from the form AND the list
-        //        the list is needed to sysematically increment the position of the image */
-        //        missile_image.Top -= missile_speed;
-        //        if (missile_image.Top < 10)
-        //        {
-        //            this.Controls.Remove(missile_image);
-        //        }
-        //    }
-        //    MissileImage.RemoveAll(x => x.Top < 10);
-        //}
-
-        ///* creating the enemy sprite is similar to the creation of a missile sprite. I decided to use a random x coordinate
-        // based on the players image width to ensure that the enemy is shootable when it is generated */
-        //private void MakeNewEnemy()
-        //{
-        //    NewEnemy = new Enemy(RandomNumber(PlayerImage.Width / 2, Width - PlayerImage.Width), 0, 5, 100, 90);
-        //    Enemies.Add(NewEnemy);
-        //    NewEnemyImage = new PictureBox();
-        //    NewEnemyImage.Location = new Point(NewEnemy.PosX, NewEnemy.PosY);
-        //    NewEnemyImage.BackColor = Color.Black;
-        //    NewEnemyImage.Size = new Size(NewEnemy.Width, NewEnemy.Height);
-
-        //    NewEnemyImage.Name = NewEnemy.ID.ToString();
-        //    NewEnemyImage.Image = global::SpaceGame2.Properties.Resources.enemy_ship;
-
-        //    // Adds the NewEnemyImage picturebox to the form
-        //    this.Controls.Add(NewEnemyImage);
-
-        //    EnemyImage.Add(NewEnemyImage);
-        //}
-
-        //// move the enemy sprite
-        //private void MoveEnemy()
-        //{
-        //    // move the position of each enemy downwards 
-        //    // using a foreach to change the position of each projectile
-        //    foreach (Enemy enemy in Enemies)
-        //    {
-        //        enemy.PosY += enemy_speed;
-
-        //        // increment miss counter
-        //        if (enemy.PosY > (Height - 10) && game_over == false)
-        //        {
-        //            missctr += 1;
-        //            // subtract 5 points for enemy missed
-        //            scorectr -= 5;
-        //        }
-        //    }
-        //    Enemies.RemoveAll(x => x.PosY > (Height - 10));
-        //    foreach (PictureBox enemy_image in EnemyImage)
-        //    {
-        //        // The enemy image needs to be removed from the form AND the list
-        //        // the list is needed to sysematically increment the position of the image
-        //        enemy_image.Top += enemy_speed;
-        //        if (enemy_image.Top > (Height - 10))
-        //        {
-        //            this.Controls.Remove(enemy_image);
-        //        }
-        //    }
-        //    EnemyImage.RemoveAll(x => x.Top > (Height - 10));
-        //}
-
-        /* creating the explosion animation is very similar to the enemy and missile sprites. the passed in parameters are the 
-         x and y coordinates of the destroyed enemy */
-        private void MakeNewExplosion(int x, int y)
-        {
-            NewExplosion = new Explosion(x-50, y-50, 50, 200, 200);
-            Explosions.Add(NewExplosion);
-            NewExplosionImage = new PictureBox();
-            NewExplosionImage.Location = new Point(NewExplosion.PosX, NewExplosion.PosY);
-            NewExplosionImage.BackColor = Color.Black;
-            NewExplosionImage.Size = new Size(NewExplosion.Width, NewExplosion.Height);
-
-            NewExplosionImage.Name = NewExplosion.ID.ToString();
-            NewExplosionImage.Image = global::SpaceGame2.Properties.Resources.explosion;
-
-            // Adds the NewExplosionImage picturebox to the form
-            this.Controls.Add(NewExplosionImage);
-
-            ExplosionImage.Add(NewExplosionImage);
-        }
+// CLASS METHODS
 
         // create the player sprite
         private void InitializePlayer()
         {
-            Player = new Player(this.Width/2-50, this.Height-140, player_speed, 100, 100);
-            PlayerImage = new PictureBox();
-            PlayerImage.Location = new Point(Player.PosX, Player.PosY);
-            PlayerImage.BackColor = Color.Black;
-            PlayerImage.Size = new Size(Player.Width, Player.Height);
-            PlayerImage.Image = global::SpaceGame2.Properties.Resources.player_ship;
-
+            // construct the player object
+            new Player(this.Width / 2 - 50, this.Height - 140, player_speed, 100, 100, global::SpaceGame2.Properties.Resources.player_ship, this);
             // set up event handler for weapon customizability (NOT USED)
-            this.PlayerImage.Click += new System.EventHandler(this.PlayerImage_Click);
-
-            // Adds the PlayerImage picturebox to the form
-            this.Controls.Add(PlayerImage);
-        }
-
-        // move the player sprite
-        private void MovePlayer()
-        {
-            if (move_right == true && (Player.PosX < (this.Width - PlayerImage.Width)))
-            {
-                Player.PosX += player_speed;
-            }
-            if (move_left == true && Player.PosX > 0)
-            {
-                Player.PosX -= player_speed;
-            }
-            PlayerImage.Left = Player.PosX;
-        }
-
-        // control the timing of for how long the explosion animation remains on screen
-        private void ExplosionTime()
-        {
-            foreach(Explosion explosion in Explosions)
-            {
-                explosion.DisplayCounter--;
-                if (explosion.DisplayCounter <= 0)
-                {
-                    explosion.Hit = true;
-                    foreach (PictureBox explosion_image in ExplosionImage)
-                    {
-                        if (explosion_image.Name == explosion.ID.ToString())
-                        {
-                            // remove explosion image from the form
-                            this.Controls.Remove(explosion_image);
-                        }
-                    }
-                    // release the image from the list
-                    ExplosionImage.RemoveAll(x => x.Name == explosion.ID.ToString());
-                }
-            }
-            Explosions.RemoveAll(x => x.Hit == true);
+            Player.PlayerImage.Click += new System.EventHandler(this.PlayerImage_Click);
         }
 
         // ends the game when an enemy hits the player
@@ -376,11 +186,10 @@ namespace SpaceGame2
         {
             foreach(Enemy enemy in Enemy.Enemies)
             {
-                if ((enemy.PosY+50) > Player.PosY && (enemy.PosX + enemy.Width) > Player.PosX && enemy.PosX < (Player.PosX + Player.Width))
+                if ((enemy.PosY+50) > Player.PlayerObj.PosY && (enemy.PosX + enemy.Width) > Player.PlayerObj.PosX && enemy.PosX < (Player.PlayerObj.PosX + Player.PlayerObj.Width))
                 {
-                    //MakeNewExplosion(enemy.PosX, enemy.PosY);
-                    MakeNewExplosion(Player.PosX, Player.PosY);
-                    this.Controls.Remove(PlayerImage);
+                    new Explosion(Player.PlayerObj.PosX - 50, Player.PlayerObj.PosY - 50, 50, 200, 200, global::SpaceGame2.Properties.Resources.explosion, this);
+                    this.Controls.Remove(Player.PlayerImage);
 
                     enemy.Hit = true;
                     foreach (PictureBox enemy_image in Enemy.EnemyImage)
@@ -403,7 +212,7 @@ namespace SpaceGame2
         private void MissileImpact()
         {
             // iteration to check for impact of missiles with enemies
-            foreach (Projectile missile in Projectile.Projectiles)//Missile)
+            foreach (Projectile missile in Projectile.Projectiles)
             {
                 foreach (Enemy enemy in Enemy.Enemies)
                 {
@@ -420,7 +229,7 @@ namespace SpaceGame2
                         }
 
                         // remove the images
-                        foreach (PictureBox missile_image in Projectile.ProjectileImage)//MissileImage)
+                        foreach (PictureBox missile_image in Projectile.ProjectileImage)
                         {
                             if (missile_image.Name == missile.ID.ToString())
                             {
@@ -435,15 +244,16 @@ namespace SpaceGame2
                             {
                                 // replace enemy image with explosion animation
                                 // set counter for ticks to display explosion
-                                MakeNewExplosion(enemy_image.Left, enemy_image.Top);
+                                new Explosion(enemy_image.Left-50, enemy_image.Top-50, 50, 200, 200, global::SpaceGame2.Properties.Resources.explosion, this);
+
 
                                 // remove enemy image from the form
                                 this.Controls.Remove(enemy_image);
-                                // let the item from the image list get removed when it reaches the top of the window
-                                //OR remove it based on the matching coordinates of the object
+                                
                             }
                         }
-                        // must go within these brackets or null pointer exception occurs
+                        // remove the image based on the matching coordinates of the object in the list
+                        // action must go within these brackets or null pointer exception occurs
                         Enemy.EnemyImage.RemoveAll(x => x.Top == Enemy.Enemies.Find(y => y.Hit == true).PosY);
                         Projectile.ProjectileImage.RemoveAll(x => x.Top == Projectile.Projectiles.Find(y => y.Hit == true).PosY);
                     }
@@ -454,20 +264,11 @@ namespace SpaceGame2
             Projectile.Projectiles.RemoveAll(x => x.Hit == true);
         }
 
-        // If the player 
+        // If the player and enemy collide
         private void GameOver()
         {
             this.Controls.Add(this.start);
             Enemy.ClearLists(this);
-            ////start.Show();
-            //Enemies.Clear();
-            //foreach (PictureBox enemy_image in EnemyImage)
-            //{
-            //    // remove enemy image from the form
-            //    this.Controls.Remove(enemy_image);
-            //    // let the item from the image list get removed when it reaches the top of the window
-            //}
-            //EnemyImage.Clear();
         }
 
         // Enables all timers

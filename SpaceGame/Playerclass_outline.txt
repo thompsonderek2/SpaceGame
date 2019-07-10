@@ -1,0 +1,10 @@
+public class Player : Sprite
+// CLASS PROPERTIES
+        public static PictureBox PlayerImage { get; set; }
+        public static Player PlayerObj { get; set; }
+// CONSTRUCTOR
+        public Player(int x_position, int y_position, int speed, int width, int height, Image image, Form form)
+
+// CLASS METHODS
+        private void NewPlayer(Image image, Form form)
+        public void MovePlayer(bool move_right, bool move_left, int player_speed, Form form)

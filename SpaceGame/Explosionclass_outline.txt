@@ -1,0 +1,15 @@
+public class Explosion : Sprite
+// CLASS FIELDS
+        public static List<Explosion> Explosions = new List<Explosion>();
+        public static List<PictureBox> ExplosionImage = new List<PictureBox>();
+        protected static int ctr;
+        private int DisplayCounter { get; set; }
+
+// CONSTRUCTOR
+        public Explosion(int x_position, int y_position, int time, int width, int height, Image image, Form form)
+
+// CLASS METHODS
+        private void NewExplosion(Image image, Form form)
+        public static void ExplosionTime(Form form)
+
+

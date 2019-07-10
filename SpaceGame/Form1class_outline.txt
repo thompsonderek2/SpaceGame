@@ -1,5 +1,5 @@
-class Form1 : Form
-// CLASS PROPERTIES
+public partial class Form1 : Form
+// CLASS FIELDS
         bool move_right = false;
         bool move_left = false;
         bool fire_weapon = false;
@@ -28,10 +28,9 @@ class Form1 : Form
         private void ExplosionTimer_Tick(object sender, EventArgs e)
 
 // CLASS METHODS
-        private void MakeNewExplosion(int x, int y)
         private void InitializePlayer()
         private void MovePlayer()
-        private void ExplosionTime()
+
         private void EnemyImpact()
         private void MissileImpact()
         private void GameOver()

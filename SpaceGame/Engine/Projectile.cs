@@ -14,7 +14,7 @@ namespace Engine
         public static List<PictureBox> ProjectileImage = new List<PictureBox>();
 
 
-        protected static int ctr = 0;
+        private static int ctr = 0;
 
         public Projectile(int x_position, int y_position, int speed, Form form)
         {
@@ -26,16 +26,11 @@ namespace Engine
             ctr += 1;
 
             MakeNewProjectile(form);
-
         }
 
         private void MakeNewProjectile(Form form)
         {
-            //NewMissile = new Projectile((PlayerImage.Left + PlayerImage.Width / 2), PlayerImage.Top, missile_speed);
-            //Missile.Add(NewMissile);
             Projectiles.Add(this);
-
-
             PictureBox NewProjectileImage = new PictureBox();
             NewProjectileImage.Location = new Point(this.PosX, this.PosY);
             NewProjectileImage.BackColor = Color.Orange;
@@ -49,9 +44,6 @@ namespace Engine
 
             // Adds the missile picturebox to the form
             form.Controls.Add(NewProjectileImage);
-
-            // subtract one from score for each missile shot
-            // scorectr--;
         }
 
         /* I needed to ensure that the visible image and the invisible sprite object stayed aligned while moving across the screen */

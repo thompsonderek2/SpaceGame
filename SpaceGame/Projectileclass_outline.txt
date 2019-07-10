@@ -1,0 +1,14 @@
+public class Projectile : Sprite
+// CLASS FIELDS
+        public static List<Projectile> Projectiles = new List<Projectile>();
+        public static List<PictureBox> ProjectileImage = new List<PictureBox>();
+        private static int ctr = 0;
+// CONSTRUCTOR
+        public Projectile(int x_position, int y_position, int speed, Form form)
+
+// CLASS METHODS
+
+        private void MakeNewProjectile(Form form)
+        public static void MoveProjectile(int projectile_speed, Form form)
+        public static string ShowCount()
+

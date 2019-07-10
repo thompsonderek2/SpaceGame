@@ -20,10 +20,5 @@ namespace Engine
         // Hit flag to indicate projectile has hit target
         public bool Hit { get; set; }
 
-        public void SetPosition(int x, int y)
-        {
-            PosX = x;
-            PosY = y;
-        }
     }
 }

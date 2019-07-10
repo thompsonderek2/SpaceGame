@@ -1,0 +1,14 @@
+public class Enemy : Sprite
+// CLASS FIELDS
+        public static List<Enemy> Enemies = new List<Enemy>();
+        public static List<PictureBox> EnemyImage = new List<PictureBox>();
+        private static int ctr = 0;
+
+// CONSTRUCTOR
+        public Enemy(int x_position, int y_position, int speed, int width, int height, Form form, Image image)
+
+// CLASS METHODS
+        private void MakeNewEnemy(Image image, Form form)
+        public static void MoveEnemy( bool game_over, ref int missctr, ref int scorectr, Form form)
+        public static void ClearLists(Form form)
+        public static string ShowCount()

@@ -13,10 +13,7 @@ namespace Engine
         public static List<Enemy> Enemies = new List<Enemy>();
         public static List<PictureBox> EnemyImage = new List<PictureBox>();
 
-        protected static int ctr = 0;
-        //public static int StartPosX { get; set; }
-        //public static int StartPosY { get; set; }
-
+        private static int ctr = 0;
 
         public Enemy(int x_position, int y_position, int speed, int width, int height, Form form, Image image)
         {
@@ -93,7 +90,7 @@ namespace Engine
                    enemy object in the object list. so if we can find it in the list we can incremet the image by the 
                    value of the speed property for that enemy object */
 
-                    enemy_image.Top += Enemies.Find(x => x.ID.ToString() == enemy_image.Name).Speed;//enemy_speed;
+                    enemy_image.Top += Enemies.Find(x => x.ID.ToString() == enemy_image.Name).Speed;
                     if (enemy_image.Top > (form.Height - 10))
                     {
                         form.Controls.Remove(enemy_image);
@@ -101,11 +98,10 @@ namespace Engine
             }
             EnemyImage.RemoveAll(x => x.Top > (form.Height - 10));
             Enemies.RemoveAll(x => x.PosY > (form.Height - 10));
-            //Enemies.RemoveAll(x => x.Hit == true);
-
         }
 
-        /* made this function to delete all enemies from the screen after the game ends */
+        /* made this function to delete all enemies from the screen after the game ends 
+           form refers to the instance calling the function */
         public static void ClearLists(Form form)
         {
             Enemies.Clear();
