@@ -1,13 +1,15 @@
 ## SpaceGame
 
-An arcade-style space shooter game using Windows Forms for the visual effects.
+A collection of game engine classes for building arcade-style space shooter games using Windows Forms for the visual effects.
 
-![Game play](https://github.com/thompsonderek2/SpaceGame/blob/migrate_methods/SpaceGame/project_image1.png "Game play")
+![Game play](https://github.com/thompsonderek2/SpaceGame/blob/migrate_methods/SpaceGame/project_image1.png "Demo of game play")
 
 
 ## Description
 
 This project is a stand-alone application that consists of a game engine for keeping track of multiple moving sprites of different types, controlling speed, direction, updating location, and collision detection.  A graphical user interface is provided that uses the Windows Forms class libraries to provide visual effects.
+
+A demo is provided as a sample.
 
 ## Motivation
 
@@ -15,8 +17,10 @@ The purpose of undertaking this project was to imporve my skill using C#, develo
 Mostly, this was a fun project and I enjoyed it. Maybe it can be some use to you as an example.
 Surprisingly, there doesn't seem to be much demand for Windows Forms based games ;)
 
+## Installation
+To run the demo version of the software, download the zip folder "SpaceGame Demo" and run the SpaceGame.exe application file.
+
 ## Usage
-Install the demo application that will be posted shortly or start your own project using the code from the engine classes.
 
 To get started using the game engine for your own project, open a new Windows Forms Application solution in Visual Studio 2017 or newer.
 

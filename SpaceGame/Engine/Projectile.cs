@@ -13,6 +13,7 @@ namespace Engine
         public static List<Projectile> Projectiles = new List<Projectile>();
         public static List<PictureBox> ProjectileImage = new List<PictureBox>();
 
+        static int Speed { get; set; }
 
         private static int ctr = 0;
 
@@ -53,20 +54,20 @@ namespace Engine
             using a foreach to change the position of each projectile */
             foreach (Projectile projectile in Projectiles)
             {
-                projectile.PosY -= projectile.Speed;
+                projectile.PosY -= Speed;
             }
-            Projectiles.RemoveAll(x => x.PosY < 10);
             foreach (PictureBox projectile_image in ProjectileImage)
             {
                 /* The missile image needs to be removed from the form AND the list
                 the list is needed to sysematically increment the position of the image */
-                projectile_image.Top -= Projectiles.Find(x => x.ID.ToString() == projectile_image.Name).Speed;
+                projectile_image.Top -= Speed;//Projectiles.Find(x => x.ID.ToString() == projectile_image.Name).Speed;
                 if (projectile_image.Top < 10)
                 {
                     form.Controls.Remove(projectile_image);
                 }
             }
             ProjectileImage.RemoveAll(x => x.Top < 10);
+            Projectiles.RemoveAll(x => x.PosY < 10);
         }
 
         ~Projectile()

@@ -52,7 +52,7 @@ namespace SpaceGame2
             this.Controls.Remove(label4);
 
             hitctr = missctr = scorectr = 0;
-            enemy_speed = 10;
+            enemy_speed = 20;
             game_over = false;
 
             InitializePlayer();

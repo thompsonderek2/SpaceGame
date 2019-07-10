@@ -1,0 +1,13 @@
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Release\SpaceGame2.exe.config
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Release\SpaceGame2.exe
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Release\SpaceGame2.pdb
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Release\Engine.dll
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\bin\Release\Engine.pdb
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.csprojAssemblyReference.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.Form1.resources
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.Properties.Resources.resources
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.csproj.GenerateResource.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.csproj.CoreCompileInputs.cache
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.csproj.CopyComplete
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.exe
+C:\Users\Derek\Desktop\SpaceGame\SpaceGame\SpaceGame2\obj\Release\SpaceGame2.pdb
