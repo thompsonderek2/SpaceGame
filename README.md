@@ -1,6 +1,8 @@
 ## SpaceGame
 
-A collection of game engine classes for building arcade-style space shooter games using Windows Forms for the visual effects.
+A collection of game engine classes for creating and managing multiple sprites across a Windows Forms application.
+
+A demo application is provided that was modeled after the spirit of the arcade game Space Invaders.
 
 ![Game play](https://github.com/thompsonderek2/SpaceGame/blob/migrate_methods/SpaceGame/project_image1.png "Demo of game play")
 
@@ -212,8 +214,11 @@ Example of explosion animation timing function:
         }
 ```
 
-### Other Functionality
+## Future Work
 All object/edge detection and interaction between sprites is managed in the Form class. A future project would be to migrate object detection into the Engine namespace classes.
+
+## Support
+If you encounter bugs or have questions or comments regarding the use or design of this software, I would appreciate hearing from you.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
